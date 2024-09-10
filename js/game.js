@@ -16,15 +16,37 @@ class Game {
     this.height = 580;
     this.width = 900;
     this.obstacles = [];
+    this.stars = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
     this.gameIntervalId;
     this.gameLoopFrequency = Math.round(1000/60); // 60fps  
    // this.time = 0; // Want to introduce timer
-  this.stars = [1];
+   
 
+  let frameCount = 0;
+  let score = 0;
+  const scoreElement = document.getElementById('score');
+  
+  function updateScore() {
+    frameCount++;
+  
+    if (frameCount >= 60) {
+      score++;
+      scoreElement.textContent = score;
+      frameCount = 0; // Reset the frame count
+    }
+    requestAnimationFrame(updateScore);
+    console.log(score);
   }
+  }
+  
+  
+  
+  // Start the animation frame loop
+  
+
 
  /* if (this.frameNumber % 600 === 0) {
     this.increasePlayerSpeed()   
@@ -55,15 +77,17 @@ class Game {
 
   gameLoop() {
     console.log("in the game loop");
-      // If the lives are 1, end the game
+      // If the lives are 2, end the game
       if (this.lives == 2) {
-        this.gameLoopFrequency = Math.round(1000/15); // 60fps 
-        this.player.directionX += 0.01;
+        this.gameLoopFrequency = Math.round(500/60); // 60fps 
+        this.player.directionX += 0.00;
         this.score = this.score += 20;
 
       }
     this.update();
-      
+    
+    requestAnimationFrame(updateScore);
+
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
     }
@@ -110,14 +134,14 @@ class Game {
     // when there is no other obstacles on the screen
     if (Math.random() > 0.97 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstacle(this.gameScreen));
+      this.stars.push(new star(this.gameScreen));
     }
 
     // Create a new star based on a random probability
     // when there is no other obstacles on the screen
-    if (Math.random() > 0.10 && this.stars.length < 1) {
-      this.star.push(new star(this.gameScreen));
+    if (Math.random() > 0.05 && this.obstacles.length < 1) {
+      this.obstacles.push(new Obstacle(this.gameScreen));
     }
-    
   }
 
   // Create a new method responsible for ending the game
@@ -127,14 +151,11 @@ class Game {
       obstacle.element.remove();
       
     });
-    // Show end game screen
-    this.gameEndScreen.style.display = "none";
-    // Show game screen
-    this.gameIsOver.style.display = "block";
-    this.gameIsOver = true;
-    // Hide game screen
-    this.gameScreen.style.display = "none";
 
-    this.score.style.display = "block";
+    this.gameIsOver = true;
+   // Hide game screen
+   this.gameScreen.style.display = "none";
+    // Show end game screen
+    this.gameEndScreen.style.display = "block";
     }
 }

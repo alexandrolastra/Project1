@@ -12,7 +12,7 @@ class Obstacle extends Component {
 
   move() {
     // Move the obstacle down by 3px
-    this.top += 9;
+    this.top += 3;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }

@@ -11,6 +11,7 @@ $(document).ready(function() {
 window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
+  const scapeButton = document.getElementById("scape-button");
   let game;
 
   startButton.addEventListener("click", function () {
@@ -21,6 +22,12 @@ window.onload = function () {
     // Call the restartGame function when the button is clicked
     restartGame();
   });
+
+  scapeButton.addEventListener("click", function () {
+    // Call the endGame function when the button is clicked
+    endGame();
+  });
+  
 
   function startGame() {
     console.log("start game");
@@ -35,6 +42,12 @@ window.onload = function () {
     location.reload();
   }
 
+  function endGame() {
+    game.endGame();  function restartGame() {
+    this.game.endGame();
+  }
+  }
+
   // Function that handles KEYDOWN event
   function handleKeydown(event) {
     const key = event.key;
@@ -44,6 +57,7 @@ window.onload = function () {
       "ArrowRight",
       "ArrowDown",
       "Shift",
+      "0"
      /* "ArrowLeft" && "ArrowRight",
       "ArrowUp" && "ArrowDown" */
     ];
@@ -55,6 +69,10 @@ window.onload = function () {
       // Update player's directionX and directionY based on the key pressed
       switch (key) {
           // This case sends and Alert window in order to pause the game that can continue by pressing Enter key or Click Ok 
+          case "0":
+            alert('You Scape from Hyperspace');
+            endGame();
+            break
           case "Shift":
           alert('Shift is a Time Pause in Hyperspace');
           break

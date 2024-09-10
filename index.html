@@ -13,8 +13,14 @@
       <h1><img src="./images/hyperscapeTitle.png" alt="" class="arrows-img" /></h1>
     </div>
     <div class="container"> </div>
-      <button id="button">PAUSE</button><button id="restart-button">Restart</button>
-  </head>
+      <button id="button">PAUSE</button>
+      <button id="restart-button">Restart</button>
+      <button id="scape-button">SCAPE!</button>
+      <title>Score Counter</title>
+      <p>Score: <span id="score">0</span></p>
+  <script src="game.js"></script>
+
+    </head>
 
   <body>
   <main>
@@ -23,32 +29,33 @@
       <img src="./images/hyperscape.png" alt="" class="logo-img" />
       <br />
       <button id="start-button">Start Game</button>
-      <p>Use key arrows to stear your ship & Shift to Pause Time!</p>
-      <img src="./images/arrowsfull.png" alt="" class="arrows-img" />
+      <p>Use key arrows to stear your ship, Shift to Pause Time! & 0 to SCAPE!</p>
+      <button id="start-button" aria-setsize="12">Shift</button> 
+      <button id="start-button" aria-setsize="12">0</button> 
+      <img src="./images/arrowsfull.png" alt="" class="arrows-img" /> <p>Use key arrows to stear your ship, Shift to Pause Time! & 0 to SCAPE!</p>
+      
     </div>
        
       <div id="game-container">
-        
         <div>
           <h2>Stats</h2>
           <p>Score: <span id="score">0</span></p>
           <p>Lives: <span id="lives">3</span></p>
-         <!-- #game-end is initially hidden using CSS style display: none -->
-    <div id="game-end">
-      <img src="./images/swhyperdust.gif" alt="" class="logo-img" />
-      <h1>Game Over</h1>
-      <br />
         </div>
       <!-- #game-screen is initially hidden using CSS style display: none -->
-      <div id="game-screen"></div>
-      <canvas id="Background" width="1000" height="800">
-        <img src="./images/galaxy.gif" alt="" class="background" />
-      </canvas>
-      
+      <div id="game-screen">
+      <img src="./images/galaxy.gif" alt="" class="background" />
+      <h1>Game On</h1>
     </div>
-
-   
-
+      <br />
+    </div>
+    <!-- #game-end is initially hidden using CSS style display: none -->
+    <div id="game-end">
+      <img src="./images/swhyperdust.gif" alt="" class="logo-img" />
+      <p></p>
+      <img src="./images/stardust.png" alt="" class="logo-img" />
+      <h1>Game Over</h1>
+      <br />
     </div>
     </main>
     

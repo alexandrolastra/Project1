@@ -8,21 +8,23 @@ body {
 }
 
 #game-container {
-  display: block;
+  display: flex;
   width: 100vw;
   padding: 20px 0px;
   justify-content: center;
 }
-
+.game-screen {
+  display: none;
+}
 #game-screen {
   display: none;
-  align-content: right;
+  align-content: center;
   padding: 20px 0px;
   overflow: hidden;
   position: relative;
   background-image: url(../images/galaxygif.gif);
   background-size: cover;
-  animation: slide 10s linear infinite;
+  animation: slide 5s linear infinite;
 }
 
 /* @keyframes slide {
@@ -38,7 +40,7 @@ body {
 } */
 
 #game-end {
-  display: none;
+  display: "block";
 }
 
 .game-intro p {
@@ -58,8 +60,9 @@ body button {
   font-size: 30px;
   background-color: #000001;
   color: #fff;
-  padding: 20px 40px;
-  border: 0;
+  padding: 20px 20px;
+  gap: 10 px;
+  border: 10px;
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
