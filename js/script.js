@@ -81,13 +81,13 @@ window.onload = function () {
           game.player.directionX = 9;
           break;
         case "ArrowDown":
-          game.player.directionY = 3;
+          game.player.directionY = 9;
           break;
           case "ArrowLeft":
             game.player.directionX = -9;
             break;
           case "ArrowUp":
-            game.player.directionY = -3;
+            game.player.directionY = -9;
             break;
       }
       /*
@@ -104,37 +104,20 @@ window.onload = function () {
     }
   }
   // Add the handleKeydown function as an event listener for the keydown event
-  window.addEventListener("keydown", handleKeydown);
   
-  window.addEventListener("keyup", handleKeyup);
-  // Function that handles KEYUP event
-   function handleKeyup(event) {
-    const key = event.key;
-    const possibleKeystrokes = [
-      "ArrowLeft",
-      "ArrowUp",
-      "ArrowRight",
-      "ArrowDown",
-      "Shift",
-     /* "ArrowLeft" && "ArrowRight",
-      "ArrowUp" && "ArrowDown" */
-    ];
-
-    // Check if the pressed key is in the possibleKeystrokes array
-    if (possibleKeystrokes.includes(key)) {
-
-      if (possibleKeystrokes = "ArrowLeft" || "ArrowUp") {
-        game.player.directionX = 0; 
-      }
-      if (possibleKeystrokes = "ArrowUp" ||"ArrowDown") {
-        game.player.directionY = 0; 
-      }
+  window.addEventListener("keydown", handleKeydown);
+ // Add the handleKeydown function as an event listener for the keydown event
+  window.addEventListener("keyup", (event) => {
+    if (possibleKeystrokes = "ArrowLeft" ||  "ArrowRight" ) {
+      game.player.directionX = 0; 
     }
-  }
+    if (possibleKeystrokes = "ArrowUp" ||  "ArrowDown") {
+      game.player.directionY = 0; 
+    }
+   
+  });
 
-  // Add the handleKeydown function as an event listener for the keydown event
-  window.addEventListener("keyup", handleKeyup);
-};
+  };
 
 
 

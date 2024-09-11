@@ -3,11 +3,11 @@ class star {
     this.gameScreen = gameScreen;
     this.left = Math.floor(Math.random() * 300 + 70);
     this.top = 0;
-    this.width = 70;
-    this.height = 320;
+    this.width = 56;
+    this.height = 236;
     this.element = document.createElement("img");
 
-    this.element.src = "./images/brayshort.png";
+    this.element.src = "images/star2.png";
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;

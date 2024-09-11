@@ -20,7 +20,7 @@ class Player {
   }
 
   move() {
-    // Update player's ships position based on directionX and directionY
+    // Update player's ship position based on directionX and directionY
     this.left += this.directionX;
     this.top += this.directionY;
 
@@ -38,7 +38,7 @@ class Player {
       this.top = this.gameScreen.offsetHeight - this.height - 10;
     }
 
-    // Update the player's ships position on the screen
+    // Update the player's ship position on the screen
     this.updatePosition(); 
   }
 

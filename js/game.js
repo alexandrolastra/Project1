@@ -4,6 +4,7 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.backgroundScreen = document.getElementById("background");
+   this.scoreElement = document.getElementById('score');
     this.player = new Player(
       this.gameScreen,
       50,
@@ -12,7 +13,6 @@ class Game {
       75,
       "./images/x wing.png"
     );
-
     this.height = 580;
     this.width = 900;
     this.obstacles = [];
@@ -21,39 +21,32 @@ class Game {
     this.lives = 3;
     this.gameIsOver = false;
     this.gameIntervalId;
-    this.gameLoopFrequency = Math.round(1000/60); // 60fps  
-   // this.time = 0; // Want to introduce timer
-   
+    this.gameLoopFrequency = Math.round(1000 / 60); // 60fps  
+    this.frameCount = 0;
+    this.scoreMultiplier = 1;
+    // this.time = 0; // Want to introduce timer
 
-  let frameCount = 0;
-  let score = 0;
-  const scoreElement = document.getElementById('score');
-  
-  function updateScore() {
-    frameCount++;
-  
-    if (frameCount >= 60) {
-      score++;
-      scoreElement.textContent = score;
-      frameCount = 0; // Reset the frame count
-    }
-    requestAnimationFrame(updateScore);
-    console.log(score);
+
+    /* function updateScore() {
+      frameCount++;
+    
+      if (frameCount >= 60) {
+        score++;
+        scoreElement.textContent = score;
+        frameCount = 0; // Reset the frame count
+      }
+      requestAnimationFrame(updateScore);
+      console.log(score);
+    } */
   }
-  }
-  
-  
-  
+
   // Start the animation frame loop
-  
-
-
- /* if (this.frameNumber % 600 === 0) {
-    this.increasePlayerSpeed()   
-    this.increaseStarSpawnRate();
-    this.increaseObstacleSpeed()
-    this.increaseBackgroundSpeed()
-  } */
+  /* if (this.frameNumber % 600 === 0) {
+     this.increasePlayerSpeed()   
+     this.increaseStarSpawnRate();
+     this.increaseObstacleSpeed()
+     this.increaseBackgroundSpeed()
+   } */
 
   start() {
     // Set the height and width of the game screen
@@ -62,34 +55,63 @@ class Game {
 
     // Hide the start screen
     this.startScreen.style.display = "none";
-   // Show the game screen
+    // Show the game screen
     this.gameScreen.style.display = "block";
     // Hide the end screen
-   this.gameEndScreen.style.display = "none";
-
+    this.gameEndScreen.style.display = "none";
 
     // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
-      }, this.gameLoopFrequency);  
-      }
-  
+    }, this.gameLoopFrequency);
+  }
+
 
   gameLoop() {
     console.log("in the game loop");
-      // If the lives are 2, end the game
-      if (this.lives == 2) {
-        this.gameLoopFrequency = Math.round(500/60); // 60fps 
-        this.player.directionX += 0.00;
-        this.score = this.score += 20;
+    this.frameCount += 1;
+    this.scoreElement.innerText = this.score;
+    // If the lives are 2, end the game
+     if (this.lives == 2) {
+      this.gameLoopFrequency = Math.round(1000 /60); // 60fps 
+      this.player.directionX += 0.00;
+      this.score = this.score += 0;
+      this.frameCount += 1;
+      this.score = this.score += 20;
 
+    }   
+   
+      if (this.frameCount % (60 /(Math.ceil(Math.random() * 1))) === 0) {
+        //this.stars.push(new star(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        
       }
+    if (this.frameCount % 60 === 0) { // This condition  % 60 === 0 will occur once every second because we have 60 frames per second
+      this.score += 1 * this.scoreMultiplier
+      this.scoreMultiplier *= 1
+      this.gameLoopFrequency **= -0.5
+    }
+    if (this.frameCount % (60 * 30) === 0) { // This condition % (60 * 30) === 0 will occur once every 30 seconds because we have 60 frames per second
+      // Do something
+      this.gameLoopFrequency **= 5
+      this.frameCount **= 4;
+      this.score = this.score += 1;
+      
+   
+
+      
+    }
+    if (this.frameCount  === (60 * 30)) { // This condition === (60 * 30) will occur only once after 30 seconds
+      // Do something
+
+    }
     this.update();
-    
-    requestAnimationFrame(updateScore);
+
+    // requestAnimationFrame(updateScore);
 
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
+      // add score to local storage
     }
   }
 
@@ -113,8 +135,6 @@ class Game {
         i--;
       } // If the obstacle is off the screen (at the bottom)
       else if (obstacle.top > this.height) {
-        // Increase the score by 1
-        this.score++;
         // Remove the obstacle from the DOM
         obstacle.element.remove();
         // Remove obstacle object from the array
@@ -134,7 +154,7 @@ class Game {
     // when there is no other obstacles on the screen
     if (Math.random() > 0.97 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstacle(this.gameScreen));
-      this.stars.push(new star(this.gameScreen));
+      
     }
 
     // Create a new star based on a random probability
@@ -149,13 +169,13 @@ class Game {
     this.player.element.remove();
     this.obstacles.forEach(function (obstacle) {
       obstacle.element.remove();
-      
+
     });
 
     this.gameIsOver = true;
-   // Hide game screen
-   this.gameScreen.style.display = "none";
+    // Hide game screen
+    this.gameScreen.style.display = "none";
     // Show end game screen
     this.gameEndScreen.style.display = "block";
-    }
+  }
 }

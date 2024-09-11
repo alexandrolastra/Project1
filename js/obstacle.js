@@ -1,13 +1,13 @@
 class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = Math.floor(Math.random() * 600 + 30);
-    this.top = 0;
-    this.width = 150;
-    this.height = 150;
+    this.left = Math.floor(Math.random() * 600 + 2);
+    this.top = -150;
+    this.width = 56;
+    this.height = 260;
     this.element = document.createElement("img");
 
-    this.element.src = "./images/pblue.png";
+    this.element.src = "images/brayshort.png";
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
