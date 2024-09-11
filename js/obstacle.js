@@ -3,11 +3,11 @@ class Obstacle {
     this.gameScreen = gameScreen;
     this.left = Math.floor(Math.random() * 600 + 2);
     this.top = -150;
-    this.width = 56;
-    this.height = 260;
+    this.width = 150;
+    this.height = 150;
     this.element = document.createElement("img");
 
-    this.element.src = "images/brayshort.png";
+    this.element.src = "images/pblue.png";
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
@@ -23,9 +23,9 @@ class Obstacle {
     this.element.style.top = `${this.top}px`;
   }
 
-  move() {
-    // Move the obstacle down by 3px
-    this.top += 6;
+  move(increaseObstacleSpeedMultiplier) {
+    // Move the obstacle down by 6px
+    this.top += 3 * increaseObstacleSpeedMultiplier ;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }

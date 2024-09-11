@@ -29,6 +29,8 @@ window.onload = function () {
   });
   
 
+
+
   function startGame() {
     console.log("start game");
     game = new Game();
@@ -78,16 +80,16 @@ window.onload = function () {
           break
     
         case "ArrowRight":
-          game.player.directionX = 9;
+          game.player.directionX = 27;
           break;
         case "ArrowDown":
-          game.player.directionY = 9;
+          game.player.directionY = 27;
           break;
           case "ArrowLeft":
-            game.player.directionX = -9;
+            game.player.directionX = -27;
             break;
           case "ArrowUp":
-            game.player.directionY = -9;
+            game.player.directionY = -27;
             break;
       }
       /*
