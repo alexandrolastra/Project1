@@ -2,13 +2,14 @@
 // https://alexandrolastra.github.io/project1/
 //https://github.com/alexandrolastra/project1.git 
 //
+
 $(document).ready(function() {
     $('#button').click(function() {
       alert('This is a pause buttom!');
     });
   });
 ////
-window.onload = function () {
+window.onload = function () { 
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
   const scapeButton = document.getElementById("scape-button");
@@ -25,7 +26,7 @@ window.onload = function () {
 
   scapeButton.addEventListener("click", function () {
     // Call the endGame function when the button is clicked
-    endGame();
+    scapeGame();
   });
   
 
@@ -47,6 +48,11 @@ window.onload = function () {
   function endGame() {
     game.endGame();  function restartGame() {
     this.game.endGame();
+  }
+  }
+  function scapeGame() {
+    game.scapeGame();  function scapeGame() {
+    this.game.scapeGame();
   }
   }
 
@@ -72,7 +78,7 @@ window.onload = function () {
       switch (key) {
           // This case sends and Alert window in order to pause the game that can continue by pressing Enter key or Click Ok 
           case "0":
-            alert('You Scape from Hyperspace');
+            alert('You Scape alive from Hyperspace');
             endGame();
             break
           case "Shift":

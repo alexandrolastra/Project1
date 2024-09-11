@@ -3,6 +3,7 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+    this.gameScapeScreen = document.getElementById("scape-end");
     this.backgroundScreen = document.getElementById("background");
    this.scoreElement = document.getElementById('score');
     this.player = new Player(
@@ -44,9 +45,10 @@ class Game {
     this.startScreen.style.display = "none";
     // Show the game screen
     this.gameScreen.style.display = "block";
-    this.gameScreen.style.display = "block";
     // Hide the end screen
     this.gameEndScreen.style.display = "none";
+     // Hide the scape screen
+    this.gameScapeScreen.style.display = "none";
 
     // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
     this.gameIntervalId = setInterval(() => {
@@ -87,6 +89,30 @@ class Game {
         //this.stars.push(new star(this.gameScreen));
        // this.obstacles.push(new Obstacle(this.gameScreen));
      }
+     
+     if (this.frameCount  === (60 * 10)) { // This condition === (60 * 30) will occur only once after 30 seconds
+      // Do something
+      this.increaseObstacleSpeedMultiplier = 1;
+      if (this.frameCount % (60 /(Math.ceil(Math.random() * 1))) === 0) {
+        //this.stars.push(new star(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));}
+    }
 
     // If the lives are 2, end the game
      if (this.lives == 2) {
@@ -110,7 +136,7 @@ class Game {
       this.scoreMultiplier *= 1;
       this.gameLoopFrequency **= 1; */
     }
-    if (this.frameCount % (60 * 300) === 0) { // This condition % (60 * 30) === 0 will occur once every 30 seconds because we have 60 frames per second
+    if (this.frameCount % (60 * 30) === 0) { // This condition % (60 * 30) === 0 will occur once every 30 seconds because we have 60 frames per second
       // Do something
       this.score = this.score += 3000000;
   
@@ -156,32 +182,8 @@ class Game {
         // Update the counter variable to account for the removed obstacle
         i--;
       }
-
- // Check for collision and if an obstacle is still on the screen
-    for (let i = 0; i < this.obstacles.length; i++) {
-      const obstacle = this.obstacles[i];
-      obstacle.move(this.increaseObstacleSpeedMultiplier);
-
-      // If the player's car collides with an obstacle
-      if (this.player.didCollide(obstacle)) {
-        // Remove the obstacle element from the DOM
-        obstacle.element.remove();
-        // Remove obstacle object from the array
-        this.obstacles.splice(i, 1);
-        // Reduce player's lives by 1
-        this.lives--;
-        // Update the counter variable to account for the removed obstacle
-        i--;
-      } // If the obstacle is off the screen (at the bottom)
-      else if (obstacle.top > this.height) {
-        // Remove the obstacle from the DOM
-        obstacle.element.remove();
-        // Remove obstacle object from the array
-        this.obstacles.splice(i, 1);
-        // Update the counter variable to account for the removed obstacle
-        i--;
-      }
- // Check for collision and if an STAR is still on the screen
+    }
+      // Check for collision and if an STAR is still on the screen
     for (let i = 0; i < this.stars.length; i++) {
       const star = this.stars[i];
       star.move(this.increaseObstacleSpeedMultiplier);
@@ -192,8 +194,8 @@ class Game {
         star.element.remove();
         // Remove obstacle object from the array
         this.stars.splice(i, 1);
-        // Reduce player's lives by 1
-        this.lives--;
+        //  Player's lives by 1
+        this.lives++;
         // Update the counter variable to account for the removed obstacle
         i--;
       } // If the obstacle is off the screen (at the bottom)
@@ -205,9 +207,7 @@ class Game {
         // Update the counter variable to account for the removed obstacle
         i--;
       }
-
     }
-
 
     // If the lives are 0, end the game
     if (this.lives === 0) {
@@ -228,10 +228,11 @@ class Game {
     }
   }
 
+
   // Create a new method responsible for ending the game
   endGame() {
 
-    this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score ;
+    this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score;
     this.player.element.remove();
     this.obstacles.forEach(function (obstacle) {
       obstacle.element.remove();
@@ -243,5 +244,23 @@ class Game {
     this.gameScreen.style.display = "none";
     // Show end game screen
     this.gameEndScreen.style.display = "block";
+  }
+
+   // Create a new method responsible for SCAPE ending the game
+   scapeGame() {
+
+    this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score;
+    this.player.element.remove();
+    this.obstacles.forEach(function (obstacle) {
+      obstacle.element.remove();
+
+    });
+
+    this.gameIsOver = true;
+    // Hide game screen
+    this.gameScreen.style.display = "none";
+    // Show end game screen
+    this.gameScapeScreen.style.display = "block";
+
   }
 }

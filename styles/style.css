@@ -6,12 +6,19 @@ body {
 #game-intro {
   padding: 20px 0px;
 }
-
 #game-container {
   display: flex;
   width: 100vw;
   padding: 20px 0px;
   justify-content: center;
+}
+#game-container {
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 .game-screen {
   display: none;
@@ -40,6 +47,9 @@ body {
 } */
 
 #game-end {
+  display: "none";
+}
+#scape-end {
   display: "none";
 }
 
