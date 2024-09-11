@@ -6,7 +6,7 @@ class Obstacle extends Component {
       0,
       100,
       150,
-      "./images/redCar.png"
+      "images/redCar.png"
     );
   }
 

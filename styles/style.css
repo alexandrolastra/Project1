@@ -22,7 +22,7 @@ body {
   padding: 20px 0px;
   overflow: hidden;
   position: relative;
-  background-image: url(../images/galaxygif.gif);
+  background-image: url(images/galaxygif.gif);
   background-size: cover;
   animation: slide 5s linear infinite;
 }

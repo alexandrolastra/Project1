@@ -11,7 +11,7 @@ class Game {
       125,
       50,
       75,
-      "./images/x wing.png"
+      "images/x wing.png"
     );
     this.height = 580;
     this.width = 900;
