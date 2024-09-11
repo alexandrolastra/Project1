@@ -13,6 +13,8 @@ window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
   const scapeButton = document.getElementById("scape-button");
+
+  
   let game;
 
   startButton.addEventListener("click", function () {
