@@ -5,8 +5,8 @@ head p {
   padding: 20px 20px;
   gap: 10 px;
   border: 10px;
-  box-shadow: 0;
-  border-radius: 5%;
+  box-shadow: 4;
+  border-radius: 8%;
   margin-bottom: 20px;
 }
 body {
@@ -15,18 +15,15 @@ body {
 }
 
 #game-intro {
-  padding: 20px 0px;
+  padding: 0px 0px;
 }
-#game-container {
-  display: flex;
-  width: 100vw;
-  padding: 20px 0px;
-  justify-content: center;
-}
+
 #game-container {
   display: block;
-  width: 100vw;
-  padding: 20px 0px;
+  align-content: center;
+  width: 100%;
+  padding: opx 0px;
+  background-color: black;
   justify-content: center;
   overflow: hidden;
   position: relative;
@@ -36,19 +33,21 @@ body {
 
 }
 #game-screen {
-  display: block;
-
+  display: none;
   align-content: center;
-  padding: 20px 0px;
+  align-items: center;
+  left: 200 px;
+  padding: 0px 0px;
   overflow: hidden;
-  position: relative;
-  background-image: url(/images/galaxygif.gif);
+  justify-content: center;
+  position: center;
+  background-image: url(/images/svertloop500.gif);
   background-color: black;
   background-size: cover;
-  animation: slide 800ms linear infinite;
+  animation: slide 3s linear infinite;
 }
 #background { 
-  display: block; 
+  display: none; 
   background-image: url(/images/galaxygif.gif);
 }
 
@@ -65,15 +64,16 @@ body {
 }
 
 #game-end {
-  display: "none";
+  display: none;
 }
 #scape-end {
-  display: "none";
+  display: none;
 }
 
 .game-intro p {
   font-size: 18px;
   font-family: "Verdana";
+  align-self: end;
 }
 
 .logo-img {
@@ -87,6 +87,7 @@ top: 500 px;
 
 }
 .arrows-img {
+  align-self: end;
   width: 150px;
 }
 

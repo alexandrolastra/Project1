@@ -62,14 +62,10 @@ window.onload = function () {
   }
 
   function endGame() {
-    game.endGame();  function restartGame() {
-    this.game.endGame();
-  }
+    game.endGame(); 
   }
   function scapeGame() {
-    game.scapeGame();  function scapeGame() {
-    this.game.scapeGame();
-  }
+    game.gameIsOver = true;  
   }
   /*
   function leftButton() {
@@ -89,7 +85,8 @@ window.onload = function () {
       "ArrowRight",
       "ArrowDown",
       "Shift",
-      "0"
+      "Control",
+    //  "Alt"
      /* "ArrowLeft" && "ArrowRight",
       "ArrowUp" && "ArrowDown" */
     ];
@@ -101,10 +98,14 @@ window.onload = function () {
       // Update player's directionX and directionY based on the key pressed
       switch (key) {
           // This case sends and Alert window in order to pause the game that can continue by pressing Enter key or Click Ok 
-          case "0":
+          case "Control":
             alert('You Scape alive from Hyperspace');
             scapeGame();
             break
+         // case "Alt":
+         //   alert('To Restart Press Enter or Click Ok');
+         //  If(  ){ startGame();}
+        //    break
           case "Shift":
           alert('Shift is a Time Pause in Hyperspace');
           break

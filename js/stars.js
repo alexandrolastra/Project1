@@ -1,7 +1,7 @@
 class Star {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = Math.floor(Math.random() * 600 + 2);
+    this.left = Math.floor(Math.random() * 880 + 2);
     this.top = -150;
     this.width = 56;
     this.height = 260;
@@ -25,8 +25,17 @@ class Star {
 
   move(increaseObstacleSpeedMultiplier) {
     // Move the obstacle down by 3px
-    this.top += 12 * increaseObstacleSpeedMultiplier ;
+    this.top += 12;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }
-}
+  /* 
+  move(increaseObstacleSpeedMultiplier) {
+    // Move the obstacle down by 3px
+    this.top += 9 * increaseObstacleSpeedMultiplier ;
+    // Update the obstacle's position on the screen
+    this.updatePosition();
+  }
+*/
+
+  }

@@ -1,13 +1,13 @@
 class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = Math.floor(Math.random() * 600 + 2);
-    this.top = -150;
-    this.width = 150;
-    this.height = 150;
+    this.left = Math.floor(Math.random() * 750 + 2);
+    this.top = -100;
+    this.width = 100;
+    this.height = 100;
     this.element = document.createElement("img");
 
-    this.element.src = "images/pblue.png" || "images/mercury.png"  ;
+    this.element.src = "images/pblue.png";
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
@@ -25,7 +25,7 @@ class Obstacle {
 
   move(increaseObstacleSpeedMultiplier) {
     // Move the obstacle down by 6px
-    this.top += 6 * increaseObstacleSpeedMultiplier ;
+    this.top += 3 * increaseObstacleSpeedMultiplier ;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }
