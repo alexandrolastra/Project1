@@ -42,12 +42,12 @@ body {
   justify-content: center;
   position: center;
   background-image: url(/images/svertloop500.gif);
-  background-color: black;
+  background-color: none;
   background-size: cover;
   animation: slide 3s linear infinite;
 }
 #background { 
-  display: none; 
+  display: block; 
   background-image: url(/images/galaxygif.gif);
 }
 
