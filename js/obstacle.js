@@ -7,7 +7,7 @@ class Obstacle {
     this.height = 150;
     this.element = document.createElement("img");
 
-    this.element.src = "images/pblue.png";
+    this.element.src = "images/pblue.png" || "images/mercury.png"  ;
     this.element.style.position = "absolute";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
@@ -25,7 +25,7 @@ class Obstacle {
 
   move(increaseObstacleSpeedMultiplier) {
     // Move the obstacle down by 6px
-    this.top += 3 * increaseObstacleSpeedMultiplier ;
+    this.top += 6 * increaseObstacleSpeedMultiplier ;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }

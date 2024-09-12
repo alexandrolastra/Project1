@@ -6,14 +6,16 @@ class Game {
     this.gameScapeScreen = document.getElementById("scape-end");
     this.backgroundScreen = document.getElementById("background");
    this.scoreElement = document.getElementById('score');
-    this.player = new Player(
+   this.scoreElement2 = document.getElementById('score2');
+   this.player = new Player(
       this.gameScreen,
       50,
       125,
       50,
       75,
-      "images/x wing.png"
+      "images/x wing.png",
     );
+  
     this.height = 580;
     this.width = 900;
     this.obstacles = [];
@@ -50,6 +52,8 @@ class Game {
      // Hide the scape screen
     this.gameScapeScreen.style.display = "none";
 
+
+
     // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
@@ -62,18 +66,20 @@ class Game {
     
     this.frameCount += 1;
     this.scoreElement.innerText = 
-   " frameCount :" + this.frameCount +"  "
-   +"score:"+ this.score +"  "
-   +"gameLoopFreq:"+ this.gameLoopFrequency +" ";
-    
+   " Lightsecs : " + this.frameCount +"  "
+   +" Score :"+ this.score +" ";
+ // +" Energy Shield Hits Capacity : " +  this.lives + " ";
+  this.scoreElement2.innerText = " Energy Shield Hits Capacity : " +  this.lives + " ";  
+  //+"gameLoopFreq :"+ this.gameLoopFrequency +" ";
+     this.increaseObstacleSpeedMultiplier = 1.4;
+
+
    //1condition
     if (this.frameCount % (60 * 1) === 0) { // This condition % (60 * 30) === 0 will occur once every 30 seconds because we have 60 frames per second
      this.score +=1;
      //this.gameLoopFrequency=this.gameLoopFrequency * 2;
      //this.gameLoopFrequency * 2;
      this.obstacles.push(new Obstacle(this.gameScreen));
-      
-    
     this.increaseObstacleSpeedMultiplier *= 1.30;
      
     //this.increaseObstacleSpeedMultiplier * 2;
@@ -115,19 +121,39 @@ class Game {
     }
 
     // If the lives are 2, end the game
-     if (this.lives == 2) {
+    if (this.lives == 3) {
+      //this.gameLoopFrequency = Math.round(1000 /60); // 60fps 
+      //this.scoreElement.innerText =" "+ this.score +  " " + " Lightsecs :"+ this.frameCount +" "+ "Warning " +  this.lives + "Energy shield left";
+
+    }    
+    
+    if (this.lives == 2) {
       this.gameLoopFrequency = Math.round(1000 /60); // 60fps 
       //this.player.directionX += 0.00;
-      this.score = this.score += 1000000;
-      this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score +  " Light years" +  " 2 " + "lives left";
-      this.increaseObstacleSpeedMultiplier = 1;
+      this.score = this.score += 0;
+      this.scoreElement.innerText =" Score : "+ this.score +  " " + " Lightsecs : "+ this.frameCount +"  "+ " Energy Shield left : "+  this.lives ;
+      this.increaseObstacleSpeedMultiplier = 1.1;
     }   
 
       if (this.frameCount % (60 /(Math.ceil(Math.random() * 1))) === 0) {
         //this.stars.push(new star(this.gameScreen));
         this.obstacles.push(new Obstacle(this.gameScreen));
-        this.stars.push(new Star(this.gameScreen));
+        //this.stars.push(new Star(this.gameScreen));
       }
+
+      if (this.lives == 1) {
+        
+        this.scoreElement.innerText =" Score : "+ this.score +  " " + " Lightsecs : "+ this.frameCount +" "+ "Warning " +  this.lives + " Energy shield left";
+      
+        this.scoreElement.style.color = "red";
+        // this.scoreElement.innerText.style .color = "red";
+        this.increaseObstacleSpeedMultiplier = 1.6
+       if (this.frameCount % (60 /(Math.ceil(Math.random() * 1))) === 0) {
+        //this.stars.push(new star(this.gameScreen));
+        this.obstacles.push(new Obstacle(this.gameScreen));
+        //this.stars.push(new Star(this.gameScreen));
+      }
+      }    
 
 
 
@@ -210,20 +236,20 @@ class Game {
     }
 
     // If the lives are 0, end the game
-    if (this.lives === 0) {
+    if (this.lives <= 0) {
       this.endGame();
     }
 
     // Create a new obstacle based on a random probability
     // when there is no other obstacles on the screen
-    if (Math.random() > 0.97 && this.obstacles.length < 1) {
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstacle(this.gameScreen));
-      
+      this.obstacles.push(new Obstacle(this.gameScreen));
     }
 
     // Create a new star based on a random probability
     // when there is no other obstacles on the screen
-    if (Math.random() > 0.97 && this.stars.length < 1) {
+    if (Math.random() > 0.98 && this.stars.length < 1) {
       this.stars.push(new Star(this.gameScreen));
     }
   }
@@ -232,7 +258,7 @@ class Game {
   // Create a new method responsible for ending the game
   endGame() {
 
-    this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score;
+    this.scoreElement.innerText = " "+ "You became a Trillion pieces of Star Dust" +" at "+ Math.ceil(this.frameCount / 60) +" Lightyears ! ";
     this.player.element.remove();
     this.obstacles.forEach(function (obstacle) {
       obstacle.element.remove();
@@ -248,8 +274,8 @@ class Game {
 
    // Create a new method responsible for SCAPE ending the game
    scapeGame() {
-
-    this.scoreElement.innerText = " frameCount :"+ this.frameCount +"  "+"score:"+ this.score;
+  
+    this.scoreElement.innerText = " Score "+ this.score +" & Scaped A LIVE at "+ Math.ceil(this.frameCount / 60) +" Lightyears ! ";
     this.player.element.remove();
     this.obstacles.forEach(function (obstacle) {
       obstacle.element.remove();

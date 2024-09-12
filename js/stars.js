@@ -25,7 +25,7 @@ class Star {
 
   move(increaseObstacleSpeedMultiplier) {
     // Move the obstacle down by 3px
-    this.top += 3 * increaseObstacleSpeedMultiplier ;
+    this.top += 12 * increaseObstacleSpeedMultiplier ;
     // Update the obstacle's position on the screen
     this.updatePosition();
   }
