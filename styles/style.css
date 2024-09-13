@@ -21,7 +21,7 @@ body {
 #game-container {
   display: block;
   align-content: center;
-  width: 100%;
+  width: auto;
   padding: opx 0px;
   background-color: black;
   justify-content: center;
@@ -29,26 +29,26 @@ body {
   position: relative;
 }
 .game-screen {
-  display: none;
-
+  display: block;
+  background-image: url(images/Spaceloopvert2.gif);
 }
 #game-screen {
-  display: none;
+  display: block;
   align-content: center;
   align-items: center;
-  left: 200 px;
+  width: auto;
   padding: 0px 0px;
   overflow: hidden;
   justify-content: center;
   position: center;
-  background-image: url(/images/svertloop500.gif);
+  background-image: url(images/Spaceloopvert2.gif);
   background-color: none;
   background-size: cover;
   animation: slide 3s linear infinite;
 }
 #background { 
   display: block; 
-  background-image: url(/images/galaxygif.gif);
+  background-image: url(images/Spaceloopvert2.gif)
 }
 
  @keyframes slide {
@@ -73,7 +73,7 @@ body {
 .game-intro p {
   font-size: 18px;
   font-family: "Verdana";
-  align-self: end;
+  vertical-align: bottom;
 }
 
 .logo-img {

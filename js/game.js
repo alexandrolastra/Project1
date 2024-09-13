@@ -55,6 +55,18 @@ class Game {
       "images/x wing.png",
     );
 
+    document.addEventListener('DOMContentLoaded', function() {
+      const backgroundMusic = document.getElementById('backgroundMusic');
+    
+      // Example: Pause the music
+      backgroundMusic.pause();
+    
+      // Example: Play the music
+      backgroundMusic.play();
+    
+      // Example: Change the volume
+      backgroundMusic.volume = 0.1; // Volume ranges from 0.0 to 1.0
+    });
 
     // Executes the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
     this.gameIntervalId = setInterval(() => {
@@ -64,6 +76,12 @@ class Game {
 
 
   gameLoop() {
+
+
+
+
+
+
     console.log("in the game loop");
     this.frameCount += 1;
     this.scoreElement.innerText =
@@ -146,7 +164,7 @@ class Game {
 
     if (this.lives == 4) {
 
-      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " " + this.lives + " Energy shield left";
+      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " Energy shield left : "+ " " + this.lives ;
       this.scoreElement2.innerText = " " + "FULL ENERGY " + " SHIELD FULL";
       this.scoreElement2.style.color = "blue";
       // this.scoreElement.innerText.style .color = "red";
@@ -168,6 +186,7 @@ class Game {
     }
     // If the lives are 2, end the game
     if (this.lives == 3) {
+      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " Energy shield left : "+ " " + this.lives ;
       //this.gameLoopFrequency = Math.round(1000 /60); // 60fps 
       //this.scoreElement.innerText =" "+ this.score +  " " + " Lightsecs :"+ this.frameCount +" "+ "Warning " +  this.lives + "Energy shield left";
       this.scoreElement2.style.color = "black";
@@ -177,7 +196,7 @@ class Game {
       //this.gameLoopFrequency = Math.round(1000 / 60); // 60fps 
       //this.player.directionX += 0.00;
       this.score = this.score += 0;
-      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + "  " + " Energy Shield left : " + this.lives;
+      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " Energy shield left : "+ " " + this.lives ;
       this.scoreElement2.style.color = "black";
       //this.increaseObstacleSpeedMultiplier *= 1.3;
       if (this.frameCount % (60 / (Math.ceil(Math.random() * 4))) === 0) {
@@ -194,7 +213,7 @@ class Game {
 
     if (this.lives == 1) {
 
-      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " " + this.lives + " Energy shield left";
+      this.scoreElement.innerText = " Score : " + this.score + " " + " Lightsecs : " + this.frameCount + " " + " Energy shield left : "+ " " + this.lives ;
       this.scoreElement2.innerText = " " + "Warning " + " NO ENERGY LEFT";
       this.scoreElement2.style.color = "red";
       // this.scoreElement.innerText.style .color = "red";

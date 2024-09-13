@@ -46,10 +46,26 @@ window.onload = function () {
     game.player.directionX = 27;
   });
 */
+document.addEventListener('DOMContentLoaded', function() {
+  const backgroundMusic = document.getElementById('backgroundMusic');
+
+  // Example: Pause the music
+  backgroundMusic.pause();
+
+  // Example: Play the music
+  backgroundMusic.play();
+
+  // Example: Change the volume
+  backgroundMusic.volume = 0.0; // Volume ranges from 0.0 to 1.0
+});
 
 
   function startGame() {
     console.log("start game");
+    
+    backgroundMusic.play();
+     backgroundMusic.volume = 0.2;
+
     game = new Game();
 
     game.start();
@@ -59,22 +75,19 @@ window.onload = function () {
   // The function that reloads the page to start a new game
   function restartGame() {
     location.reload();
+    backgroundMusic.volume = 0.0;
   }
 
   function endGame() {
-    game.endGame(); 
+    backgroundMusic.pause();
+    game.endGame();
+    backgroundMusic.play(); 
   }
   function scapeGame() {
-    game.gameIsOver = true;  
+    backgroundMusic.pause();
+    game.gameIsOver = true; 
+    backgroundMusic.play(); 
   }
-  /*
-  function leftButton() {
-    game.player.directionX = -27;
-  }
-  function rightButton() {
-    game.player.directionX = 27;
-  } 
-    */
 
   // Function that handles KEYDOWN event
   function handleKeydown(event) {
@@ -85,7 +98,7 @@ window.onload = function () {
       "ArrowRight",
       "ArrowDown",
       "Shift",
-      "Control",
+      "0",
     //  "Alt"
      /* "ArrowLeft" && "ArrowRight",
       "ArrowUp" && "ArrowDown" */
@@ -98,7 +111,7 @@ window.onload = function () {
       // Update player's directionX and directionY based on the key pressed
       switch (key) {
           // This case sends and Alert window in order to pause the game that can continue by pressing Enter key or Click Ok 
-          case "Control":
+          case "Shift":
             alert('You Scape alive from Hyperspace');
             scapeGame();
             break
@@ -106,7 +119,7 @@ window.onload = function () {
          //   alert('To Restart Press Enter or Click Ok');
          //  If(  ){ startGame();}
         //    break
-          case "Shift":
+          case "0":
           alert('Shift is a Time Pause in Hyperspace');
           break
     
@@ -123,17 +136,7 @@ window.onload = function () {
             game.player.directionY = -27;
             break;
       }
-      /*
-      if (possibleKeystrokes["ArrowRight"] && possibleKeystrokes["ArrowLeft"]) {
-        game.player.directionX = 0;
-           // This cases should stops movements from the ship on X or Y directions
-      }
-      if (possibleKeystrokes["ArrowUp"] && possibleKeystrokes["ArrowDown"]) {
-        game.player.directionY = 0;
-        // This cases should stops movements from the ship on X or Y directions
-      }
-        */
-
+ 
     }
   }
   // Add the handleKeydown function as an event listener for the keydown event
